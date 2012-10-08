@@ -1,0 +1,13 @@
+%header
+  = link_to logo, root_path
+  %nav.round
+    %ul
+      %li= link_to "Home", root_path
+      - #if signed_in?
+        %li= link_to "Projects", "#"
+        %li= link_to "Profile", "#"
+        %li= link_to "Settings", "#"
+        %li= link_to "Sign out", "#"
+      - #else
+        %li= link_to "Sign in", "#"
+      - #end
