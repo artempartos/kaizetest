@@ -1,0 +1,25 @@
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore IDEA settings
+/.idea
+
+# Ignore schema file
+/db/schema.rb
+/db/structure.sql
+config/database.yml
+*.swp
+
+# Ignore test report
+/coverage
+
+# Ignore uploads files
+/public/system
+/public/uploads
+
