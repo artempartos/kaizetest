@@ -5,10 +5,20 @@ class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name,  :presence => true,
-            :length   => { :maximum => 50 }
+                    :length   => { :maximum => 50 }
   validates :email, :presence => true,
-            :format   => { :with => email_regex },
-            :uniqueness => { :case_sensitive => false }
+                    :format   => { :with => email_regex },
+                    :uniqueness => { :case_sensitive => false },
+                    :length   => { :minimum => 6 }
+  validates :password, :length => { :within => 6..40 }
+
 
   validates_presence_of :password, :on => :create
+
+  def self.auth(email, submitted_password)
+    user = find_by_email(email)
+    return nil  if user.nil?
+    return user if user.authenticate(submitted_password)
+  end
+
 end
