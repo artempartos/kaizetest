@@ -1,2 +1,8 @@
-%h1 Users#edit
-%p Find me in app/views/users/edit.html.haml
+%h1 Edit profile
+= simple_form_for @user do |f|
+  = f.input :name, :placeholder => 'Name', :label => false
+  = f.input :email, :placeholder => 'Email', :label => false
+  = f.input :password, :placeholder => 'Password', :label => false
+  = f.input :password_confirmation , :placeholder => 'Password confirmation', :label => false
+  %br/
+  = f.submit "Edit", :class =>'btn btn-primary'

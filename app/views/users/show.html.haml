@@ -1,2 +1,17 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%h1
+  %b Profile:
+%p
+  %b Name:
+  = @user.name
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Digest password:
+  = @user.password_digest
+%p
+  %b Was created:
+  = @user.updated_at
+%p
+  %b Was updated:
+  = @user.created_at
