@@ -9,6 +9,7 @@ gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'bcrypt-ruby'
 gem 'state_machine'
+gem 'haml-rails', '>= 0.3.4', :group => :development
 
 group :test do
   gem 'minitest'
@@ -28,6 +29,4 @@ end
 group :assets do
   gem 'therubyracer'
   gem 'uglifier'
-  gem 'sass-rails'
-  gem 'coffee-rails'
 end
