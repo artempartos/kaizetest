@@ -1,0 +1,10 @@
+- if !signed_in?
+  %h1 Добро пожаловать!
+  %p Вас приветствует Simple Task Manager.
+  %p Для входа в систему необходимо зарегистрироваться и войти под своей учётной записью.
+  = link_to "Зарегистрироваться", signup_path, :class => "btn btn-primary"
+-else
+  %h1
+    Добро пожаловать,
+    =current_user.name
+  %p Вас приветствует Simple Task Manager.
