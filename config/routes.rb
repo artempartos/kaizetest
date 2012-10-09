@@ -1,24 +1,21 @@
 Kaizetest::Application.routes.draw do
 
-  get "users/new"
+  get "errors/not_found"
 
-  get "users/index"
+  get "errors/interval_server_error"
 
-  get "users/create"
+  match "/404", :to => "errors#not_found"
+  match "/500", :to => "errors#internal_server_error"
 
-  get "users/edit"
-
-  get "users/update"
-
-  get "users/show"
-
+  get "sessions/new"
   root :to => 'welcome#index'
+
   resources :users, :except => [:destroy]
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',  :to => 'users#new'
-  #match '/signin',  :to => 'sessions#new'
-  #match '/signout', :to => 'sessions#destroy'
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

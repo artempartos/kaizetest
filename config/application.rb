@@ -69,8 +69,11 @@ module Kaizetest
      config.generators do |g|
        g.template_engine :haml
        g.test_framework  :test_unit, :fixture => true, :fixture_replacement => :factory_girl
+       g.stylesheets false
+       g.javascripts false
      end
 
     config.exceptions_app = self.routes
+
   end
 end
