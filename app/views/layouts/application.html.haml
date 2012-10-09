@@ -1,13 +1,13 @@
 !!!
-%html
+%html(lang="en")
   %head
+    = render :partial => 'layouts/head'
     %title= title
-    = render 'layouts/head'
   %body
     .container
-      = render 'layouts/header'
+      = render  :partial => 'layouts/header'
       %section.round
-        - flash.each do |key, value|
-          %div{:class => "flash #{key}"}= value
+        = flash_block
         = yield
       = #render 'layouts/footer'
+

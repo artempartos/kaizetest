@@ -34,3 +34,8 @@ section h1 {
 .right {
     float: right;
 }
+
+table, th, td
+{
+    padding: 10px
+}
