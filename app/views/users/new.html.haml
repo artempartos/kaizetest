@@ -1,0 +1,8 @@
+%h1 Sign up
+= simple_form_for @user do |f|
+  = f.input :name, :placeholder => 'Name', :label => false
+  = f.input :email, :placeholder => 'Email', :label => false
+  = f.input :password, :placeholder => 'Password', :label => false
+  = f.input :password_confirmation , :placeholder => 'Password confirmation', :label => false
+  %br/
+  = f.submit "Sign up", :class =>'btn btn-primary'
