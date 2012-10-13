@@ -1,25 +1,13 @@
 Kaizetest::Application.routes.draw do
 
-  get "story_comments/create"
-
-  get "story_comments/destroy"
-
-  get "errors/not_found"
-  get "errors/interval_server_error"
-
-  match "/404", :to => "errors#not_found"
-  match "/500", :to => "errors#internal_server_error"
-
   match "stories/do", :to => "stories#do"
   match "stories/filter", :to => "stories#filter"
   get "sessions/new"
   root :to => 'welcome#index'
-
   resources :stories
   resources :story_comments, :only => [:create, :destroy]
   resources :users, :except => [:destroy]
   resources :sessions, :only => [:new, :create, :destroy]
-
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
