@@ -1,0 +1,22 @@
+%tr
+  %td
+    %i.icon-briefcase
+    = link_to story.title, story
+  %td
+    =story.description
+  %td
+    = link_to story.creator.name, story.creator unless story.creator == nil
+  %td
+    = link_to story.performer.name, story.performer unless story.performer == nil
+  %td
+    = story.deadline
+  %td
+    = story.state
+  %td
+    - if creator?(story)
+      %a{:href => edit_story_path(story)}
+        %i.icon-pencil
+  %td
+    - if creator?(story)
+      = link_to story_path(story), :class => 'a', :method => :delete, :confirm => "You sure?",:title => "Delete #{story.title}" do
+        %i.icon-remove

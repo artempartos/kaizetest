@@ -1,15 +1,16 @@
 class Story < ActiveRecord::Base
   attr_accessible :deadline, :description, :performer_id, :title, :creator_id
+  #attr_accessor :state
   belongs_to :creator, :class_name => "User", :foreign_key => :creator_id, :inverse_of => :stories
-  has_one :performer, :class_name => "User", :foreign_key => :performer_id
+  belongs_to :performer, :class_name => "User", :foreign_key => :performer_id
+  has_many :story_comments
 
+  validates :title, :presence => true
+  validates :description,  :presence => true
+  validates :creator_id, :presence => true
+  validates :performer_id, :presence => true
+  Story.per_page= 10
     state_machine :state, :initial => :new do
-    #before_transition :parked => any - :parked, :do => :put_on_seatbelt
-    #after_transition :on => :crash, :do => :tow
-    #after_transition :on => :repair, :do => :fix
-    #after_transition any => :parked do |vehicle, transition|
-    #  vehicle.seatbelt_on = false
-    #end
 
     event :start do
       transition [:rejected, :new] => :started,
@@ -26,12 +27,6 @@ class Story < ActiveRecord::Base
     event :reject do
       transition :finished => :rejected
     end
-
-    #state all - [:parked, :stalled, :idling] do
-    #  def moving?
-    #    true
-    #  end
-    #end
 
   end
 

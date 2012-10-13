@@ -1,0 +1,12 @@
+%h1 All stories
+%h5 Фильтры:
+= simple_form_for :filter,:url => stories_filter_path  do |f|
+  = f.select :user, User.all(:order => 'id').map {|x| x.name}, :prompt => "user"
+  = f.select :state, Story.state_machine.states.map {|x| x.name}, :prompt => "state"
+  = f.submit :class => "btn btn-info btn-mini", :value => "Применить"
+  = link_to 'Сбросить', stories_path, :class => "btn btn-info btn-mini"
+= will_paginate @stories
+%table.table.table-striped
+  = render 'layouts/table'
+  = render @stories
+= will_paginate @stories
