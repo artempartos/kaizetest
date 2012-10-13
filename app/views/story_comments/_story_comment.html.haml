@@ -1,0 +1,15 @@
+%tr
+  %td.micropost
+    %comments
+      %span.content
+        = story_comment.body
+      %span.timestamp
+        Posted by
+        = link_to story_comment.user.name, story_comment.user
+        =time_ago_in_words(story_comment.created_at)
+        ago.
+  - if current_user?(story_comment.user)
+    %td
+      = link_to story_comment, :method => :delete,:confirm => "You sure?",:title => story_comment.body do
+        %i.icon-remove
+
