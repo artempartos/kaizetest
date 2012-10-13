@@ -25,16 +25,16 @@
 
       - if signed_in?
 
-        -if request.fullpath == "#"
+        -if request.fullpath == stories_path
           %li.active
-            %a{:href => root_path}
+            %a{:href => stories_path}
               %i.icon-briefcase
-              Projects
+              Stories
         -else
           %li
-            %a{:href => root_path}
+            %a{:href => stories_path}
               %i.icon-briefcase
-              Projects
+              Stories
 
         -if request.fullpath == user_path(current_user)
           %li.active
