@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :stories, :foreign_key => :creator_id, :inverse_of => :creator, :dependent => :destroy
+  has_many :story_comments, :dependent => :destroy
+
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 
