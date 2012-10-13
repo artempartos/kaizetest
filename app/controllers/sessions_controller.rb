@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       #session[:user_id] = user.id
       sign_in user
       #redirect_to root_url, :notice => "Logged in!"
-      redirect_back_or user, :notice => "Logged in!"
+      redirect_back_or root_path, :notice => "Logged in!"
     end
   end
 
