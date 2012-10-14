@@ -8,7 +8,7 @@ namespace :db do
     #make_relationships
   end
 
-  task :fillpro => :production do
+  task :fillpro do
     Rake::Task['db:reset'].invoke
     make_users
     make_stories
