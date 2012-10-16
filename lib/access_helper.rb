@@ -1,5 +1,5 @@
-module StoriesHelper
-include SessionsHelper
+module AccessHelper
+include AuthHelper
   def creator?(story)
     current_user.id==story.creator_id
   end
