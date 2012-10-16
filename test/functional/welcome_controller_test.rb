@@ -4,15 +4,15 @@ class WelcomeControllerTest < ActionController::TestCase
 
   def setup
     @user = create :user
-    sign_in @user
-    #@story = create :story
-    #@story2 = create :story
-    #@story.creator = @user
-    #@story2.performer = @user
+    @story = create :story
+    @story.creator = @user
+    @story.performer = @user
   end
 
   test "should get index" do
+    sign_in @user
     get :index
+    assert signed_in?
     assert_response :success
   end
 end
