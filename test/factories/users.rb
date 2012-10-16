@@ -5,6 +5,5 @@ FactoryGirl.define do
     name            "Partos"
     email           "partos0511@gmail.com"
     password        "123456"
-    #password        "123456"
   end
 end
