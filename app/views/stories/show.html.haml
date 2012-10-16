@@ -27,25 +27,17 @@
   = @story.state
 - if creator?(@story)
   =@story.state_events.each_with_object(nil) do |e|
-    =link_to e, stories_do_path(:id => @story.id, :event => e),  :class => "btn btn-primary" if e==:start
-    =link_to e, stories_do_path(:id => @story.id, :event => e), :class => "btn btn-danger" if e==:reject
-    =link_to e, stories_do_path(:id => @story.id, :event => e), :class => "btn btn-info" if e==:finish
-    =link_to e, stories_do_path(:id => @story.id, :event => e), :class => "btn btn-success" if e==:accept
-- if performer?(@story)
+    =link_to e, story_path(:id => @story.id, :event => e),  :class => "btn btn-primary" if e==:start
+    =link_to e, story_path(:id => @story.id, :event => e), :class => "btn btn-danger" if e==:reject
+    =link_to e, story_path(:id => @story.id, :event => e), :class => "btn btn-info" if e==:finish
+    =link_to e, story_path(:id => @story.id, :event => e), :class => "btn btn-success" if e==:accept
+- elsif performer?(@story)
   =@story.state_events.each_with_object(nil) do |e|
-    =link_to e, stories_do_path(:id => @story.id, :event => e),  :class => "btn btn-primary" if e==:start
-    =link_to e, stories_do_path(:id => @story.id, :event => e), :class => "btn btn-info" if e==:finish
+    =link_to e, story_path(:id => @story.id, :event => e),  :class => "btn btn-primary" if e==:start
+    =link_to e, story_path(:id => @story.id, :event => e), :class => "btn btn-info" if e==:finish
 %h4 Комментарии:
 = render 'story_comments/comment_form'
-- unless @comments.empty?
+- if @comments.present?
   %table.microposts
     = render @comments
     = will_paginate @comments
-
-
-
-
-
-  -#  @task.execution_state_events.each do |s|
-  -#        = link_to Task.human_execution_state_event_name(s),
-  -#        =trigger_execution_state_event_employee_task_path(@task, event: s), :method => :put, :class => "btn btn-info"

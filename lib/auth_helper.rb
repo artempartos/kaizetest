@@ -1,7 +1,6 @@
 module AuthHelper
 
   def sign_in(user)
-    #cookies.permanent.signed[:remember_token] = [user.id, user.salt]
     session[:user_id] = user.id
     self.current_user = user
   end
@@ -49,7 +48,7 @@ module AuthHelper
 
   def deny_access
     store_location
-    redirect_to signin_path, :notice => "Please sign in to access this page."
+    redirect_to new_session_path, :notice => "Please sign in to access this page."
   end
 
 end

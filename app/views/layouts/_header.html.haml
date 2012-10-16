@@ -26,13 +26,13 @@
             %i.icon-wrench
             Settings
 
-        %li{:class => (request.fullpath == signout_path ? 'active' : '')}
-          %a{:href => signout_path}
+        %li
+          =link_to session_path(1), method: :delete do
             %i.icon-hand-up
             Sign out
       - else
-        %li{:class => (request.fullpath == signin_path ? 'active' : '')}
-          %a{:href => signin_path}
+        %li{:class => (request.fullpath == new_session_path ? 'active' : '')}
+          %a{:href => new_session_path}
             %i.icon-hand-down
             Sign in
 

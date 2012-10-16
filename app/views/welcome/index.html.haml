@@ -2,8 +2,8 @@
   %h1 Добро пожаловать!
   %p Вас приветствует Simple Task Manager.
   %p Для входа в систему необходимо зарегистрироваться и войти под своей учётной записью.
-  = link_to "Войти", signin_path, :class => "btn btn-primary"
-  = link_to "Зарегистрироваться", signup_path, :class => "btn "
+  = link_to "Войти", new_session_path, :class => "btn btn-primary"
+  = link_to "Зарегистрироваться", new_user_path, :class => "btn "
 -else
   %h1
     Добро пожаловать,
@@ -11,9 +11,9 @@
   %p Вас приветствует Simple Task Manager.
   %h4 Вы создали проекты:
   %table.table.table-striped
-    = render 'layouts/table'
+    = render 'shared/table'
     = render @stories= @creator_stories
   %h4 Вы назначены исполнителем в проектах:
   %table.table.table-striped
-    = render 'layouts/table'
+    = render 'shared/table'
     = render @stories= @performer_stories

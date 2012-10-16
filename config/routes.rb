@@ -1,16 +1,10 @@
 Kaizetest::Application.routes.draw do
 
-  match "stories/do", :to => "stories#do"
-  match "stories/filter", :to => "stories#filter"
-  get "sessions/new"
   root :to => 'welcome#index'
   resources :stories
   resources :story_comments, :only => [:create, :destroy]
   resources :users, :except => [:destroy]
   resources :sessions, :only => [:new, :create, :destroy]
-  match '/signup',  :to => 'users#new'
-  match '/signin',  :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
