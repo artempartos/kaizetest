@@ -15,7 +15,9 @@ gem 'haml-rails', '>= 0.3.4'
 group :test do
   gem 'minitest'
   gem 'simplecov', :require => false
-  gem 'factory_girl_rails'
+
+  gem 'turn'
+  gem 'tconsole'
 end
 
 group :production, :staging do
@@ -24,6 +26,7 @@ end
 
 group :development, :test  do
   gem 'annotate', '2.4.1.beta1'
+  gem 'factory_girl_rails'
   gem "pg"
 end
 
