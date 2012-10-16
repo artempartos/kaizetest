@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :my_stories, :foreign_key => :creator_id, :inverse_of => :creator, :dependent => :destroy
+  has_many :my_stories, :foreign_key => :creator_id, :dependent => :destroy
   has_many :stories_for_me, :foreign_key => :performer_id
   has_many :story_comments, :dependent => :destroy
 

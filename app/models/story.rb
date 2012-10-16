@@ -1,6 +1,6 @@
 class Story < ActiveRecord::Base
   attr_accessible :deadline, :description, :performer_id, :title, :creator_id
-  belongs_to :creator, :class_name => "User", :foreign_key => :creator_id, :inverse_of => :stories
+  belongs_to :creator, :class_name => "User", :foreign_key => :creator_id
   belongs_to :performer, :class_name => "User", :foreign_key => :performer_id
   has_many :story_comments
   validates :title, :presence => true
