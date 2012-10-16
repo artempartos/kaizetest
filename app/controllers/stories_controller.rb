@@ -1,25 +1,25 @@
 class StoriesController < ApplicationController
-  include StoriesHelper
-  #render :nothing => true
-  #layout "layouts stories"
   before_filter :correct_user_to_story, :only => [:edit, :update, :destroy]
-  before_filter :filter, :only => [:index]
-
-  @@state_filter = nil
-  @@user_filter = nil
 
   def index
     @title = "Stories"
+    @q = Story.search(params[:q])
+    @stories = @q.result(:distinct => true).paginate(:page => params[:page],:per_page => 10,:order => "id ASC")
 
-  end
+end
 
   def show
     @story = Story.find(params[:id])
+    if params[:event].present?
+      @story.fire_state_event(params[:event]) if ((params[:event]=="start" || params[:event]=="finish")&&performer?(@story))||creator?(@story)
+      #проверка - может ли текущий пользователь изменять состояние
+      #если он исполнитель - то ему доступны только start/finish изменения.
+      #либо он создатель - и ему доступно все (нет проверки состояния в этом случае)
+    end
     @title = @story.title
-    @story_comment = @story.story_comments.new
-    @comments = @story.story_comments.paginate(:page => params[:page])
-
-    current_st (@story)
+    @story_comment = @story.story_comments.new #Для создания нового комментария
+    @comments = @story.story_comments.paginate(:page => params[:page]) #отображение существующих комментариев
+    current_st (@story) #Сохранение story_id в сессию (поскольку пока не знаю как делать вложенные ресурсы - на дедлайне этого нет, оставил на потом)
   end
 
   def new
@@ -61,49 +61,9 @@ class StoriesController < ApplicationController
     redirect_to stories_path
   end
 
-  def do
-    @story = Story.find(params[:id])
-    event = params[:event]
-    if ((event=="start" || event=="finish")&&performer?(@story))||creator?(@story)
-    @story.fire_state_event(event)
-    end
-    redirect_to story_path(@story)
-    #render 'show'
-
-    #
-  end
-
-  def filter
-
-
-    if !params.nil? && !params[:filter].nil?
-
-      params[:filter][:state].empty? ? @@state_filter = nil : @@state_filter = params[:filter][:state]
-
-      params[:filter][:user].empty? ? @@user_filter = nil : @@user_filter = params[:filter][:user]
-
-    end
-
-
-    @stories = Story.paginate(:page => params[:page],:order => "id ASC") if request.fullpath.include? stories_path
-    if @@user_filter && @@state_filter
-      @stories = Story.where("stories.state = ? AND (stories.creator_id = (select users.id from users where users.name = ?) OR stories.performer_id = (select users.id from users where users.name = ?))", @@state_filter,@@user_filter,@@user_filter).paginate(:page => params[:page],:order => "id ASC") if request.fullpath.include? stories_filter_path
-    elsif @@user_filter
-      @stories = Story.where("stories.creator_id = (select users.id from users where users.name = ?) OR stories.performer_id = (select users.id from users where users.name = ?)", @@user_filter,@@user_filter).paginate(:page => params[:page],:order => "id ASC") if request.fullpath.include? stories_filter_path
-    elsif @@state_filter
-      @stories = Story.where("stories.state = ?", @@state_filter).paginate(:page => params[:page],:order => "id ASC") if request.fullpath.include? stories_filter_path
-    end
-
-    render 'index'
-  end
-
 end
 
-
-
-
 private
-
 
 def correct_user_to_story
   @story = Story.find(params[:id])
