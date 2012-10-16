@@ -1,84 +1,50 @@
 %header
   %nav.round
     %ul.nav.nav-tabs
-      -if request.fullpath == root_path
-        %li.active
-          %a{:href => root_path}
-            %i.icon-home
-            Home
-      - else
-        %li
-          %a{:href => root_path}
-            %i.icon-home
-            Home
-
-      -if request.fullpath == users_path
-        %li.active
-          %a{:href => users_path}
-            %i.icon-user
-            Users
-      - else
-        %li
-          %a{:href => users_path}
-            %i.icon-user
-            Users
+      %li{:class => (request.fullpath == root_path ? 'active' : '')}
+        %a{:href => root_path}
+          %i.icon-home
+          Home
+      %li{:class => (request.fullpath == users_path ? 'active' : '')}
+        %a{:href => users_path}
+          %i.icon-user
+          Users
 
       - if signed_in?
+        %li{:class => (request.fullpath.include?(stories_path) ? 'active' : '')}
+          %a{:href => stories_path}
+            %i.icon-briefcase
+            Stories
 
-        -if request.fullpath == stories_path
-          %li.active
-            %a{:href => stories_path}
-              %i.icon-briefcase
-              Stories
-        -else
-          %li
-            %a{:href => stories_path}
-              %i.icon-briefcase
-              Stories
+        %li{:class => (request.fullpath == user_path(current_user) ? 'active' : '')}
+          %a{:href => user_path(current_user)}
+            %i.icon-pencil
+            Profile
 
-        -if request.fullpath == user_path(current_user)
-          %li.active
-            %a{:href => user_path(current_user)}
-              %i.icon-pencil
-              Profile
-        -else
-          %li
-            %a{:href => user_path(current_user)}
-              %i.icon-pencil
-              Profile
+        %li{:class => (request.fullpath == edit_user_path(current_user) ? 'active' : '')}
+          %a{:href => edit_user_path(current_user)}
+            %i.icon-wrench
+            Settings
 
-        -if request.fullpath == edit_user_path(current_user)
-          %li.active
-            %a{:href => edit_user_path(current_user)}
-              %i.icon-wrench
-              Settings
-        -else
-          %li
-            %a{:href => edit_user_path(current_user)}
-              %i.icon-wrench
-              Settings
-
-        -if request.fullpath == signout_path
-          %li.active
-            %a{:href => signout_path}
-              %i.icon-hand-up
-              Sign out
-        -else
-          %li
-            %a{:href => signout_path}
-              %i.icon-hand-up
-              Sign out
-
+        %li{:class => (request.fullpath == signout_path ? 'active' : '')}
+          %a{:href => signout_path}
+            %i.icon-hand-up
+            Sign out
       - else
-        -if request.fullpath == signin_path
-          %li.active
-            %a{:href => signin_path}
-              %i.icon-hand-down
-              Sign in
-        -else
-          %li
-            %a{:href => signin_path}
-              %i.icon-hand-down
-              Sign in
+        %li{:class => (request.fullpath == signin_path ? 'active' : '')}
+          %a{:href => signin_path}
+            %i.icon-hand-down
+            Sign in
+
+    - if request.fullpath.include?(stories_path)
+      %ul.nav.nav-list.right
+        %li.nav-header Stories actions
+        %li{:class => (request.fullpath == stories_path ? 'active' : '')}
+          %a{:href => stories_path} All stories
+        %li
+          %a{:href => root_path} My stories
+        %li{:class => (request.fullpath == new_story_path ? 'active' : '')}
+          %a{:href => new_story_path} Create story
+
 
 
