@@ -13,7 +13,7 @@ class Story < ActiveRecord::Base
     state_machine :state, :initial => :new do
 
     event :start do
-      transition [:rejected, :new] => :started,
+      transition [:rejected, :new] => :started
      end
 
     event :finish do
