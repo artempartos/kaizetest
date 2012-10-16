@@ -11,6 +11,7 @@ gem 'will_paginate'
 gem 'bcrypt-ruby'
 gem 'state_machine'
 gem 'haml-rails', '>= 0.3.4'
+gem 'ransack'
 
 group :test do
   gem 'minitest'
