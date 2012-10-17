@@ -12,23 +12,18 @@ gem 'bcrypt-ruby'
 gem 'state_machine'
 gem 'haml-rails', '>= 0.3.4'
 gem 'ransack'
+gem "pg"
 
 group :test do
   gem 'minitest'
   gem 'simplecov', :require => false
-
   gem 'turn'
   gem 'tconsole'
-end
-
-group :production, :staging do
-  gem "pg"
 end
 
 group :development, :test  do
   gem 'annotate', '2.4.1.beta1'
   gem 'factory_girl_rails'
-  gem "pg"
 end
 
 group :assets do

@@ -29,7 +29,7 @@ end
 
   def create
     @story= Story.new(params[:story])
-    @story.creator_id = current_user.id
+    @story.creator = current_user
     if @story.save
       flash[:success] = "Story was created!"
       redirect_to @story
