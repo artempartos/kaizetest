@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       @comment.destroy
       redirect_to story_path(@story)
     else
-      redirect_to root_path if @comment.nil?
+      redirect_to root_path
     end
   end
 

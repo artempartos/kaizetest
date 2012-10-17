@@ -4,17 +4,16 @@ class StoriesController < ApplicationController
   def index
     @title = "Stories"
     @q = Story.search(params[:q])
-    @stories = @q.result(:distinct => true).paginate(:page => params[:page],:per_page => 10,:order => "id ASC")
+    @stories = @q.result(:distinct => true).order("id ASC").page(params[:page]).per_page(10)
 
 end
 
   def show
     @story = Story.find(params[:id])
     @story.fire_state_event(params[:event]) if params[:event].present?
-      #if ((params[:event]=="start" || params[:event]=="finish")&&performer?(@story))||creator?(@story)
+    #if ((params[:event]=="start" || params[:event]=="finish")&&performer?(@story))||creator?(@story)
     @title = @story.title
-    @comments = @story.comments.paginate(:page => params[:page],:order => "id DESC") #для отображения существующих комментариев
-    #current_st (@story) #Сохранение story_id в сессию (поскольку пока не знаю как делать вложенные ресурсы - на дедлайне этого нет, оставил на потом)
+    @comments = @story.comments.order("id DESC").page params[:page]
   end
 
   def new
@@ -35,7 +34,7 @@ end
   end
 
   def edit
-    @story = Story.find(params[:id])
+    @story = Story.find_by_id(params[:id])
     @title = @story.title
   end
 

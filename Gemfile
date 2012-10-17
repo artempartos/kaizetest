@@ -7,7 +7,7 @@ gem 'simple_form'
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-will_paginate'
 gem 'faker'
-gem 'will_paginate'
+gem 'kaminari'
 gem 'bcrypt-ruby'
 gem 'state_machine'
 gem 'haml-rails', '>= 0.3.4'

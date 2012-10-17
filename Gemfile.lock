@@ -60,6 +60,9 @@ GEM
       railties (>= 3.1.0, < 5.0)
       thor (~> 0.14)
     json (1.7.5)
+    kaminari (0.14.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     less (2.2.2)
       commonjs (~> 0.2.6)
     less-rails (2.2.3)
@@ -154,6 +157,7 @@ DEPENDENCIES
   gravatar_image_tag
   haml-rails (>= 0.3.4)
   jquery-rails
+  kaminari
   minitest
   pg
   rails
@@ -166,4 +170,3 @@ DEPENDENCIES
   turn
   twitter-bootstrap-rails
   uglifier
-  will_paginate
