@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :my_stories, :foreign_key => :creator_id, :dependent => :destroy
   has_many :stories_for_me, :foreign_key => :performer_id
-  has_many :story_comments, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false },
                     :length   => { :minimum => 6 }
   validates :password, :length => { :within => 6..40 }
-
 
   validates_presence_of :password, :on => :create
 

@@ -1,8 +1,9 @@
 Kaizetest::Application.routes.draw do
 
   root :to => 'welcome#index'
-  resources :stories
-  resources :story_comments, :only => [:create, :destroy]
+  resources :stories do
+    resources :comments, :only => [:create, :destroy]
+  end
   resources :users, :except => [:destroy]
   resources :sessions, :only => [:new, :create, :destroy]
 

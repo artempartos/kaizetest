@@ -54,7 +54,7 @@ end
     stories = Story.all
     50.times do |n|
       body = Faker::Lorem.sentence(10)
-      st = StoryComment.create(:body => body)
+      st = Comment.create(:body => body)
       st.user = users[rand(4)]
       st.story = stories[rand(4)]
       st.save

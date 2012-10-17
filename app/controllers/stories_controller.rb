@@ -10,16 +10,11 @@ end
 
   def show
     @story = Story.find(params[:id])
-    if params[:event].present?
-      @story.fire_state_event(params[:event]) if ((params[:event]=="start" || params[:event]=="finish")&&performer?(@story))||creator?(@story)
-      #проверка - может ли текущий пользователь изменять состояние
-      #если он исполнитель - то ему доступны только start/finish изменения.
-      #либо он создатель - и ему доступно все (нет проверки состояния в этом случае)
-    end
+    @story.fire_state_event(params[:event]) if params[:event].present?
+      #if ((params[:event]=="start" || params[:event]=="finish")&&performer?(@story))||creator?(@story)
     @title = @story.title
-    @story_comment = @story.story_comments.new #Для создания нового комментария
-    @comments = @story.story_comments.paginate(:page => params[:page]) #для отображения существующих комментариев
-    current_st (@story) #Сохранение story_id в сессию (поскольку пока не знаю как делать вложенные ресурсы - на дедлайне этого нет, оставил на потом)
+    @comments = @story.comments.paginate(:page => params[:page],:order => "id DESC") #для отображения существующих комментариев
+    #current_st (@story) #Сохранение story_id в сессию (поскольку пока не знаю как делать вложенные ресурсы - на дедлайне этого нет, оставил на потом)
   end
 
   def new
