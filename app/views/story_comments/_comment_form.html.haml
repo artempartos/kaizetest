@@ -1,4 +1,4 @@
 %p Оставить комментарий:
 = simple_form_for (@story_comment) do |f|
   = f.input :body, :placeholder => 'Comment\'s body', :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xlarge"}
-  = f.submit "Comment", :class =>'btn btn-primary'
+  = f.submit class: 'btn btn-primary', value: "Отправить"

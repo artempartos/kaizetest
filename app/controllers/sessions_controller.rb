@@ -6,15 +6,13 @@ class SessionsController < ApplicationController
   def create
     user = User.auth(params[:session][:email],
                      params[:session][:password])
-    if user.nil?
+    if user.present?
+      sign_in user
+      redirect_back_or root_path, :notice => "Logged in!"
+    else
       flash.now[:error] = "Invalid email/password combination."
       @title = "Sign in"
       render 'new'
-    else
-      #session[:user_id] = user.id
-      sign_in user
-      #redirect_to root_url, :notice => "Logged in!"
-      redirect_back_or root_path, :notice => "Logged in!"
     end
   end
 

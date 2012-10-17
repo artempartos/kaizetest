@@ -18,7 +18,7 @@ end
     end
     @title = @story.title
     @story_comment = @story.story_comments.new #Для создания нового комментария
-    @comments = @story.story_comments.paginate(:page => params[:page]) #отображение существующих комментариев
+    @comments = @story.story_comments.paginate(:page => params[:page]) #для отображения существующих комментариев
     current_st (@story) #Сохранение story_id в сессию (поскольку пока не знаю как делать вложенные ресурсы - на дедлайне этого нет, оставил на потом)
   end
 

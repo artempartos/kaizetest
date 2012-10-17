@@ -1,10 +1,6 @@
 module ApplicationHelper
   def title
     base_title = "Simple Task Manager"
-    if @title.nil?
-      base_title
-    else
-      "#{base_title} | #{@title}"
-    end
+    @title.present? ?  "#{base_title} | #{@title}" : base_title
   end
 end

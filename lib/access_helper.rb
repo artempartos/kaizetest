@@ -16,5 +16,10 @@ def current_story
   @current_story ||= Story.find(session[:story_id]) if session[:story_id]
 end
 
+def authorized_user
+  @comment = current_user.story_comments.find_by_id(params[:id])
+  redirect_to root_path if @comment.nil?
+end
+
 end
 
