@@ -1,17 +1,23 @@
 %h1
-  %b Profile:
+  %b
+    = t :profile
 %p
-  %b Name:
+  %b
+    = t :name
   = @user.name
 %p
-  %b Email:
+  %b
+    = t :email
   = @user.email
 %p
-  %b Digest password:
+  %b
+    = t :password
   = @user.password_digest
 %p
-  %b Was created:
+  %b
+    = t :updated
   = @user.updated_at
 %p
-  %b Was updated:
+  %b
+    = t :created
   = @user.created_at

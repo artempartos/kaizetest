@@ -2,35 +2,44 @@
   %b
     =@story.title
 %p
-  %b Title:
+  %b
+    = t :title
   = @story.title
 %p
-  %b Description:
+  %b
+    = t :description
   = @story.description
 %p
-  %b Deadline:
+  %b
+    = t :deadline
   = @story.deadline
 %p
-  %b Creator:
+  %b
+    = t :creator
   =link_to @story.creator.name, @story.creator
 %p
-  %b Performer:
+  %b
+    = t :performer
   =link_to @story.performer.name, @story.performer
 %p
-  %b Was created:
+  %b
+    = t :created
   = @story.created_at
 %p
-  %b Was updated:
+  %b
+    = t :updated
   = @story.updated_at
 %p
-  %b State:
+  %b
+    = t :state
   = @story.state
   - if creator?(@story) || performer?(@story)
     =@story.state_events.each_with_object(nil) do |e|
       =link_to e, story_path(:id => @story.id, :event => e), :class => "btn btn-primary"
-%h4 Комментарии:
+%h4
+  = t :comments
 = render 'comments/comment_form'
 - if @comments.present?
   %table.microposts
     = render @comments
-    = will_paginate @comments
+    = paginate @comments

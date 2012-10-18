@@ -4,22 +4,22 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
 
   def index
-    @title = "Users"
+    @title = t :users
     @users = User.page params[:page]
   end
 
   def new
-    @title = "Sign up"
+    @title = t :sign_up
     @user = User.new
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Welcome to simple task manager!"
+      flash[:success] = t :hello
       redirect_to @user
     else
-      @title = "Sign up"
+      @title = t :sign_up
       render 'new'
     end
   end
@@ -31,11 +31,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated."
+      flash[:success] = t :profile_updated
       redirect_to @user
     else
-      flash[:error] = "Error"
-      @title = "Edit user"
+      flash[:error] = t :failed
+      @title = t :edit_user
       render 'edit'
     end
   end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_path,:flash => {:error => "Access denied"}) unless current_user?(@user)
+    redirect_to(root_path,:flash => {:error => t(:access_denied)}) unless current_user?(@user)
   end
 
 end

@@ -1,0 +1,54 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ru:
+  comment_created: "Комментарий создан"
+  failed: "Ошибка!"
+  logged_in: "Вы вошли в профиль!"
+  sign_in: "Войти"
+  sign_out: "Выйти"
+  sign_up: "Зарегистрироваться"
+  session_new_failed: "Неверное сочетание email/пароль"
+  logged_out: "Вы вышли из профиля!"
+  home: "Главная"
+  users: "Пользователи"
+  hi: "Добро пожаловать"
+  hello: "Вас приветствует простой менеджер задач"
+  edit_user: "Редактировать профиль"
+  profile_updated: "Профиль обновлён."
+  access_denied: "Доступ запрещён!"
+  stories: "Задачи"
+  story_created: "Задача создана"
+  edit_story: "Редактировать задачу"
+  stroy_updated: "Задача обновлена"
+  story_destoyed: "Задача удалена"
+  posted: "Опубликовано"
+  make_comment: "Создать комментарий"
+  body: 'Комментарий'
+  send: 'Отправить'
+  for_sign_in: "Для работы с системой вам необходимо зарегистрироваться и войти под своим аккаунтом"
+  project_creator: "Созданные Вами задачи"
+  project_performer: "Вы являетесь исполнителем задач"
+  name: 'Имя'
+  email: 'Почта'
+  password: 'Пароль'
+  password_conf: 'Подтверждение'
+  edit: "Редактировать"
+  all_users: "Пользователи"
+  profile: "Профиль"
+  created: "Создано"
+  updated: "Обновлено"
+  change_in_story: "Вы можете внести изменения в проект"
+  title: "Заголовок"
+  deadline: "Срок"
+  description: "Описание"
+  creator: "Владелец"
+  performer: "Исполнитель"
+  state: "Состояние"
+  filter: "Фильтр"
+  cancel: "Сбросить"
+  all_stories: "Задачи"
+  create: "Создать"
+  new_story: "Создайте новую задачи, опишите её, установите срок и исполнителя"
+  comments: "Комментарии"
+  settings: "Настройки"

@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
-  include AccessHelper
+
   before_filter :authenticate, :only => [:create, :destroy]
 
   def create
     @story = Story.find(params[:story_id])
     @comment = @story.comments.build(params[:comment])
     @comment.user = current_user
-    @comment.save  ?   flash[:success] = "Comment created!"  :  flash[:error] = "Failed!"
+    @comment.save  ?   flash[:success] = t(:comment_created) :  flash[:error] = t(:failed)
     redirect_to story_path @story
   end
 

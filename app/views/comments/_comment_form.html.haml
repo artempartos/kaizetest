@@ -1,4 +1,5 @@
-%p Оставить комментарий:
+%p
+  = t :make_comment
 = simple_form_for @story.comments.new, :url => story_comments_path(story_id: @story.id) do |f|
-  = f.input :body, :placeholder => 'Comment\'s body', :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xlarge"}
-  = f.submit class: 'btn btn-primary', value: "Отправить"
+  = f.input :body, :placeholder => t(:body), :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xlarge"}
+  = f.submit class: 'btn btn-primary', value: t(:send)

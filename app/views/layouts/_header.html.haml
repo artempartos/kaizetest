@@ -4,37 +4,37 @@
       %li{:class => (current_page?(root_path) ? 'active' : '')}
         %a{:href => root_path}
           %i.icon-home
-          Home
+          = t :home
       %li{:class => (current_page?(users_path) ? 'active' : '')}
         %a{:href => users_path}
           %i.icon-user
-          Users
+          = t :users
 
       - if signed_in?
         %li{:class => (request.fullpath.include?(stories_path) ? 'active' : '')}
           %a{:href => stories_path}
             %i.icon-briefcase
-            Stories
+            = t :stories
 
         %li{:class => (current_page?(user_path(current_user)) ? 'active' : '')}
           %a{:href => user_path(current_user)}
             %i.icon-pencil
-            Profile
+            = t :profile
 
         %li{:class => (current_page?(edit_user_path(current_user)) ? 'active' : '')}
           %a{:href => edit_user_path(current_user)}
             %i.icon-wrench
-            Settings
+            = t :settings
 
         %li
           =link_to session_path(1), method: :delete do
             %i.icon-hand-up
-            Sign out
+            = t :sign_out
       - else
         %li{:class => current_page?(new_session_path) ? 'active' : ''}
           %a{:href => new_session_path}
             %i.icon-hand-down
-            Sign in
+            = t :sign_in
 
     - if request.fullpath.include?(stories_path)
       %ul.nav.nav-list.right

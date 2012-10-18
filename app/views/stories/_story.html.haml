@@ -18,5 +18,5 @@
         %i.icon-pencil
   %td
     - if creator?(story)
-      = link_to story_path(story), :class => 'a', :method => :delete, :confirm => "You sure?",:title => "Delete #{story.title}" do
+      = link_to story_path(story), :class => 'a', :method => :delete,:title => "#{story.title}" do
         %i.icon-remove

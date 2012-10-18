@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   before_filter :correct_user_to_story, :only => [:edit, :update, :destroy]
 
   def index
-    @title = "Stories"
+    @title = t :stories
     @q = Story.search(params[:q])
     @stories = @q.result(:distinct => true).order("id ASC").page(params[:page]).per_page(10)
 
@@ -17,7 +17,7 @@ end
   end
 
   def new
-    @title = "Home"
+    @title = t :home
     @story = Story.new
   end
 
@@ -25,10 +25,10 @@ end
     @story= Story.new(params[:story])
     @story.creator = current_user
     if @story.save
-      flash[:success] = "Story was created!"
+      flash[:success] = t :story_created
       redirect_to @story
     else
-      flash[:error] = "Something went wrong!"
+      flash[:error] = t :failed
       render 'new'
     end
   end
@@ -40,18 +40,18 @@ end
 
   def update
     if @story.update_attributes(params[:story])
-      flash[:success] = "Story updated."
+      flash[:success] =
       redirect_to @story
     else
-      flash[:error] = "Error"
-      @title = "Edit story"
+      flash[:error] = t :failed
+      @title = t :edit_story
       render 'edit'
     end
   end
 
   def destroy
     Story.find(params[:id]).destroy
-    flash[:success] = "Story destroyed."
+    flash[:success] =  t :story_destoyed
     redirect_to stories_path
   end
 
@@ -61,7 +61,7 @@ private
 
 def correct_user_to_story
   @story = Story.find(params[:id])
-  redirect_to(root_path,:flash => {:error => "Access denied"}) unless creator?(@story)
+  redirect_to(root_path,:flash => {:error => t(:access_denied)}) unless creator?(@story)
 end
 
 

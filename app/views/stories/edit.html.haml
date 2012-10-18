@@ -1,9 +1,10 @@
-%h1 Edit Story
+%h1
+  = t :edit_story
 %p
-  Внесите изменения в проект
+  = t :change_in_story
 = simple_form_for (@story) do |f|
-  = f.input :title, :placeholder => 'Title', :label => false,:input_html => {:class => 'input-xxlarge' }
-  = f.input :description, :placeholder => 'Description', :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xxlarge"}
-  = f.input :deadline, :label => "Deadline",:input_html => {:class => 'input-small' }
-  = f.association :performer, :collection => User.all(:order => 'id'), :prompt => "Choose a performer"
-  = f.submit "Edit", :class =>'btn btn-primary'
+  = f.input :title, :placeholder => t(:title), :label => false,:input_html => {:class => 'input-xxlarge' }
+  = f.input :description, :placeholder => t(:description), :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xxlarge"}
+  = f.input :deadline, :label => t(:deadline),:input_html => {:class => 'input-small' }
+  = f.association :performer, :collection => User.all(:order => 'id'), :prompt => t(:performer)
+  = f.submit t(:edit), :class =>'btn btn-primary'

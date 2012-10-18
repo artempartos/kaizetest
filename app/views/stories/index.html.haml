@@ -1,11 +1,13 @@
-%h1 All stories
-%h5 Фильтры:
+%h1
+  = t :all_stories
+%h5
+  = t :filter
 
 = search_form_for @q do |f|
-  = f.select :creator_name_eq , User.all(:order => 'id').map {|x| x.name}, :prompt => "Creator"
-  = f.select :state_eq , Story.state_machine.states.map {|x| x.name}, :prompt => "State"
-  = f.submit  :class => "btn btn-info btn-mini", :value => "Применить"
-  = link_to 'Сбросить', stories_path, :class => "btn btn-info btn-mini"
+  = f.select :creator_name_eq , User.all(:order => 'id').map {|x| x.name}, :prompt => t(:creator)
+  = f.select :state_eq , Story.state_machine.states.map {|x| x.name}, :prompt => t(:state)
+  = f.submit  :class => "btn btn-info btn-mini", :value => t(:filter)
+  = link_to t(:cancel), stories_path, :class => "btn btn-info btn-mini"
 
 = paginate @stories
 %table.table.table-striped

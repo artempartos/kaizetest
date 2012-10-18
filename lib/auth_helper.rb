@@ -48,7 +48,7 @@ module AuthHelper
 
   def deny_access
     store_location
-    redirect_to new_session_path, :notice => "Please sign in to access this page."
+    redirect_to new_session_path, :notice => t(:access_denied)
   end
 
 end

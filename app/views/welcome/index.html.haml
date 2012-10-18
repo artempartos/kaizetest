@@ -1,19 +1,25 @@
 - if !signed_in?
-  %h1 Добро пожаловать!
-  %p Вас приветствует Simple Task Manager.
-  %p Для входа в систему необходимо зарегистрироваться и войти под своей учётной записью.
-  = link_to "Войти", new_session_path, :class => "btn btn-primary"
-  = link_to "Зарегистрироваться", new_user_path, :class => "btn "
+  %h1
+    = t :hello
+  %p
+    = t :hi
+  %p
+    = t :for_sign_in
+  = link_to t(:sign_in), new_session_path, :class => "btn btn-primary"
+  = link_to t(:sign_up), new_user_path, :class => "btn "
 -else
   %h1
-    Добро пожаловать,
-    =current_user.name
-  %p Вас приветствует Simple Task Manager.
-  %h4 Вы создали проекты:
+    = t :hi
+    =  current_user.name
+  %p
+    = t :hello
+  %h4
+    = t :project_creator
   %table.table.table-striped
     = render 'shared/table'
     = render @stories= @creator_stories
-  %h4 Вы назначены исполнителем в проектах:
+  %h4
+    = t :project_performer
   %table.table.table-striped
     = render 'shared/table'
     = render @stories= @performer_stories
