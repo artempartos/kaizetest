@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
 
   def index
     @title = t :stories
-    @q = Story.search(params[:q])
+    @q = Story.ransack(params[:q])
     @stories = @q.result(:distinct => true).order("id ASC").page(params[:page]).per_page(10)
 
 end

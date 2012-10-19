@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :my_stories, :foreign_key => :creator_id, :dependent => :destroy
-  has_many :stories_for_me, :foreign_key => :performer_id
+  has_many :my_stories, :class_name => "Story", :foreign_key => :creator_id, :dependent => :destroy
+  has_many :stories_for_me, :class_name => "Story", :foreign_key => :performer_id
   has_many :comments, :dependent => :destroy
 
   attr_accessible :email, :name, :password, :password_confirmation
