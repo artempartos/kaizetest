@@ -13,13 +13,14 @@
     =  current_user.name
   %p
     = t :hello
+
   %h4
     = t :project_creator
   %table.table.table-striped
-    = render 'shared/table'
-    = render @stories= @creator_stories
+    = render 'welcome/table'
+    = render @creator_stories
   %h4
     = t :project_performer
   %table.table.table-striped
-    = render 'shared/table'
-    = render @stories= @performer_stories
+    = render 'welcome/table'
+    = render @performer_stories

@@ -1,15 +1,21 @@
 %h1
   = t :users
+= search_form_for @q do |f|
+  = f.text_field :name_cont , :placeholder => t(:name)
+  = f.text_field :email_cont , :placeholder => t(:email)
+  = f.submit  :class => "btn btn-info btn-mini", :value => t(:filter)
+  = link_to t(:cancel), users_path, :class => "btn btn-info btn-mini"
+
 = paginate @users
 %table.table.table-striped.users.round
   %thead
     %tr
       %td
         %b
-          = t :name
+          = sort_link @q, :name
       %td
         %b
-          = t :email
+          = sort_link @q, :email
   %tbody
     = render @users
 = paginate @users

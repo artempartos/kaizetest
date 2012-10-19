@@ -1,6 +1,6 @@
 %h1 Sign up
 = simple_form_for @user do |f|
-  = f.input :name, :placeholder => t(:name), :label => false
+  = f.input :name, :placeholder => :name, :label => false
   = f.input :email, :placeholder => t(:email), :label => false
   = f.input :password, :placeholder => t(:password), :label => false
   = f.input :password_confirmation , :placeholder => t(:password_conf), :label => false
