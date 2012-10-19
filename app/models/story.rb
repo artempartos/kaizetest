@@ -5,8 +5,8 @@ class Story < ActiveRecord::Base
   has_many :comments
   validates :title, :presence => true
   validates :description,  :presence => true
-  validates :creator_id, :presence => true
-  validates :performer_id, :presence => true
+  validates :creator, :presence => true
+  validates :performer, :presence => true
   state_machine :state, :initial => :new do
 
     event :start do
