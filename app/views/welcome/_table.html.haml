@@ -1,25 +1,26 @@
-%thead
-  %tr
-    %td
-      %b
-        = t :title
-    %td
-      %b
-        = t :description
-    %td
-      %b
-        = t :creator
-    %td
-      %b
-        = t :performer
-    %td
-      %b
-        = t :deadline
-    %td
-      %b
-        = t :state
-    %td
-      %i.icon-pencil
-    %td
-      %i.icon-remove
-%tbody
+- with_options :scope => :table do |table|
+  %thead
+    %tr
+      %td
+        %b
+          = table.t(:title)
+      %td
+        %b
+          = table.t(:description)
+      %td
+        %b
+          = table.t(:creator)
+      %td
+        %b
+          = table.t(:performer)
+      %td
+        %b
+          = table.t(:deadline)
+      %td
+        %b
+          = table.t(:state)
+      %td
+        %i.icon-pencil
+      %td
+        %i.icon-remove
+  %tbody

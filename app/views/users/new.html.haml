@@ -1,8 +1,9 @@
-%h1 Sign up
-= simple_form_for @user do |f|
-  = f.input :name, :placeholder => :name, :label => false
-  = f.input :email, :placeholder => t(:email), :label => false
-  = f.input :password, :placeholder => t(:password), :label => false
-  = f.input :password_confirmation , :placeholder => t(:password_conf), :label => false
-  %br/
-  = f.submit t(:sign_up), :class =>'btn btn-primary'
+- with_options :scope => :users do |us|
+  %h1 #{us.t :sign_up}
+  = simple_form_for @user do |f|
+    = f.input :name, :placeholder => us.t(:name), :label => false
+    = f.input :email, :placeholder => us.t(:email), :label => false
+    = f.input :password, :placeholder => us.t(:password), :label => false
+    = f.input :password_confirmation , :placeholder => us.t(:password_conf), :label => false
+    %br/
+    = f.submit us.t(:sign_up), :class =>'btn btn-primary'

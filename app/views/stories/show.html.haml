@@ -1,44 +1,40 @@
-%h1
-  %b
-    =@story.title
-%p
-  %b
-  = @story.title
-%p
-  %b
-    = t :description
-  = @story.description
-%p
-  %b
-    = t :deadline
-  = @story.deadline
-%p
-  %b
-    = t :creator
-  =link_to @story.creator.name, @story.creator
-%p
-  %b
-    = t :performer
-  =link_to @story.performer.name, @story.performer
-%p
-  %b
-    = t :created
-  = @story.created_at
-%p
-  %b
-    = t :updated
-  = @story.updated_at
-%p
-  %b
-    = t :state
-  = @story.state
-  - if creator?(@story) || performer?(@story)
-    =@story.state_events.each_with_object(nil) do |e|
-      =link_to e, story_path(:id => @story.id, :event => e), :class => "btn btn-primary"
-%h4
-  = t :comments
-= render 'comments/comment_form'
-- if @comments.present?
-  %table.microposts
-    = render @comments
-    = paginate @comments
+- with_options :scope => :story do |st|
+  %h1
+    %b
+      =@story.title
+  %p
+    %b #{ st.t(:description) << ':'}
+    = @story.description
+  %p
+    %b #{ st.t(:deadline) << ':'}
+    = @story.deadline
+  %p
+    %b
+      = st.t(:creator) << ':'
+    =link_to @story.creator.name, @story.creator
+  %p
+    %b
+      = st.t(:performer) << ':'
+    =link_to @story.performer.name, @story.performer
+  %p
+    %b
+      = st.t(:created) << ':'
+    = @story.created_at
+  %p
+    %b
+      = st.t(:updated) << ':'
+    = @story.updated_at
+  %p
+    %b
+      = st.t(:state) << ':'
+    = story_state_t @story.state
+    - if creator?(@story) || performer?(@story)
+      =@story.state_events.each_with_object(nil) do |e|
+        =link_to story_event_t(e), story_path(:id => @story.id, :event => e), :class => "btn btn-primary"
+  %h4
+    = st.t(:comments) << ':'
+  = render 'comments/comment_form'
+  - if @comments.present?
+    %table.microposts
+      = render @comments
+      = paginate @comments

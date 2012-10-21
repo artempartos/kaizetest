@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @story = Story.find(params[:story_id])
     @comment = @story.comments.build(params[:comment])
     @comment.user = current_user
-    @comment.save  ?   flash[:success] = t(:comment_created) :  flash[:error] = t(:failed)
+    @comment.save  ?   flash[:success] = flash_translate(:success) :  flash[:error] = flash_translate(:error)
     redirect_to story_path @story
   end
 

@@ -1,26 +1,27 @@
-- if !signed_in?
-  %h1
-    = t :hello
-  %p
-    = t :hi
-  %p
-    = t :for_sign_in
-  = link_to t(:sign_in), new_session_path, :class => "btn btn-primary"
-  = link_to t(:sign_up), new_user_path, :class => "btn "
--else
-  %h1
-    = t :hi
-    =  current_user.name
-  %p
-    = t :hello
+- with_options(:scope => :home) do |thome|
+  - if !signed_in?
+    %h1
+      = thome.t :hello
+    %p
+      = thome.t :hi
+    %p
+      = thome.t :for_sign_in
+    = link_to thome.t(:sign_in), new_session_path, :class => "btn btn-primary"
+    = link_to thome.t(:sign_up), new_user_path, :class => "btn "
+  -else
+    %h1
+      = thome.t :hi
+      =  current_user.name
+    %p
+      = thome.t :hello
 
-  %h4
-    = t :project_creator
-  %table.table.table-striped
-    = render 'welcome/table'
-    = render @creator_stories
-  %h4
-    = t :project_performer
-  %table.table.table-striped
-    = render 'welcome/table'
-    = render @performer_stories
+    %h4
+      = thome.t :project_creator
+    %table.table.table-striped
+      = render 'welcome/table'
+      = render @creator_stories
+    %h4
+      = thome.t :project_performer
+    %table.table.table-striped
+      = render 'welcome/table'
+      = render @performer_stories

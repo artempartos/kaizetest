@@ -1,17 +1,18 @@
-%h1
-  = t :all_stories
-%h5
-  = t :filter
+- with_options :scope => :story do |form|
+  %h1
+    = form.t :all_stories
+  %h5
+    = form.t :filter
 
-= search_form_for @q do |f|
-  = f.select :creator_name_eq , User.all(:order => 'id').map {|x| x.name}, :prompt => t(:creator)
-  = f.select :state_eq , Story.state_machine.states.map {|x| x.name}, :prompt => t(:state)
-  = f.submit  :class => "btn btn-info btn-mini", :value => t(:filter)
-  = link_to t(:cancel), stories_path, :class => "btn btn-info btn-mini"
+  = search_form_for @q do |f|
+    = f.select :creator_name_eq , User.all(:order => 'id').map {|x| x.name}, :prompt => form.t(:creator)
+    = f.select :state_eq , Story.state_machine.states.map {|x| x.name}, :prompt => form.t(:state)
+    = f.submit  :class => "btn btn-info btn-mini", :value => form.t(:filter)
+    = link_to form.t(:cancel), stories_path, :class => "btn btn-info btn-mini"
 
-= paginate @stories
-%table.table.table-striped
-  = render 'stories/table'
-  = render @stories
-= paginate @stories
+  = paginate @stories
+  %table.table.table-striped
+    = render 'stories/table'
+    = render @stories
+  = paginate @stories
 

@@ -1,50 +1,57 @@
 %header
   %nav.round
     %ul.nav.nav-tabs
-      %li{:class => (current_page?(root_path) ? 'active' : '')}
-        %a{:href => root_path}
-          %i.icon-home
-          = t :home
-      %li{:class => (current_page?(users_path) ? 'active' : '')}
-        %a{:href => users_path}
-          %i.icon-user
-          = t :users
+      - with_options :scope => :header do |header|
+        %li{:class => (current_page?(root_path) ? 'active' : '')}
+          %a{:href => root_path}
+            %i.icon-home
+            = header.t(:home)
+        %li{:class => (current_page?(users_path) ? 'active' : '')}
+          %a{:href => users_path}
+            %i.icon-user
+            = header.t(:users)
 
-      - if signed_in?
-        %li{:class => (request.fullpath.include?(stories_path) ? 'active' : '')}
-          %a{:href => stories_path}
-            %i.icon-briefcase
-            = t :stories
+        - if signed_in?
+          %li{:class => (request.fullpath.include?(stories_path) ? 'active' : '')}
+            %a{:href => stories_path}
+              %i.icon-briefcase
+              = header.t(:stories)
 
-        %li{:class => (current_page?(user_path(current_user)) ? 'active' : '')}
-          %a{:href => user_path(current_user)}
-            %i.icon-pencil
-            = t :profile
+          %li{:class => (current_page?(user_path(current_user)) ? 'active' : '')}
+            %a{:href => user_path(current_user)}
+              %i.icon-pencil
+              = header.t(:profile)
 
-        %li{:class => (current_page?(edit_user_path(current_user)) ? 'active' : '')}
-          %a{:href => edit_user_path(current_user)}
-            %i.icon-wrench
-            = t :settings
+          %li{:class => (current_page?(edit_user_path(current_user)) ? 'active' : '')}
+            %a{:href => edit_user_path(current_user)}
+              %i.icon-wrench
+              = header.t(:settings)
 
-        %li
-          =link_to session_path(1), method: :delete do
-            %i.icon-hand-up
-            = t :sign_out
-      - else
-        %li{:class => current_page?(new_session_path) ? 'active' : ''}
-          %a{:href => new_session_path}
-            %i.icon-hand-down
-            = t :sign_in
+          %li
+            =link_to session_path(1), method: :delete do
+              %i.icon-hand-up
+              = header.t(:sign_out)
+        - else
+          %li{:class => current_page?(new_session_path) ? 'active' : ''}
+            %a{:href => new_session_path}
+              %i.icon-hand-down
+              = header.t(:sign_in)
+
 
     - if request.fullpath.include?(stories_path)
       %ul.nav.nav-list.right
-        %li.nav-header Stories actions
-        %li{:class => (current_page?(stories_path) ? 'active' : '')}
-          %a{:href => stories_path} All stories
-        %li
-          %a{:href => root_path} My stories
-        %li{:class => (current_page?(new_story_path) ? 'active' : '')}
-          %a{:href => new_story_path} Create story
+        - with_options :scope => :story do |story_nav|
+          %li.nav-header
+            = story_nav.t(:tasks)
+          %li{:class => (current_page?(stories_path) ? 'active' : '')}
+            %a{:href => stories_path}
+              = story_nav.t(:all)
+          %li
+            %a{:href => root_path}
+              = story_nav.t(:my)
+          %li{:class => (current_page?(new_story_path) ? 'active' : '')}
+            %a{:href => new_story_path}
+              = story_nav.t(:create)
 
 
 

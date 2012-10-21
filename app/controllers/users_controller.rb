@@ -4,23 +4,24 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
 
   def index
-    @title = t :users
+    @title = t('users.all_users')
     @q = User.ransack(params[:q])
     @users = @q.result(:distinct => true).order("id ASC").page(params[:page]).per_page(10)
   end
 
   def new
-    @title = t :sign_up
+    @title = t 'title.sign_up'
     @user = User.new
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = t :hello
+      flash[:success] = flash_translate :success
       redirect_to @user
     else
-      @title = t :sign_up
+      flash[:error] = flash_translate :error
+      @title = t 'title.sign_up'
       render 'new'
     end
   end
@@ -32,11 +33,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:success] = t :profile_updated
+      flash[:success] = flash_translate :success
       redirect_to @user
     else
-      flash[:error] = t :failed
-      @title = t :edit_user
+      flash[:error] = flash_translate :error
+      @title = t 'title.edit'
       render 'edit'
     end
   end
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_path,:flash => {:error => t(:access_denied)}) unless current_user?(@user)
+    redirect_to(root_path,:flash => {:error => flash_translate(:error)}) unless current_user?(@user)
   end
 
 end

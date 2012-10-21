@@ -3,15 +3,15 @@
     %i.icon-briefcase
     = link_to story.title, story
   %td
-    =story.description
+    = story.description
   %td
-    = link_to story.creator.name, story.creator unless story.creator == nil
+    = link_to story.creator.name, story.creator if story.creator
   %td
-    = link_to story.performer.name, story.performer unless story.performer == nil
+    = link_to story.performer.name, story.performer if story.performer
   %td
     = story.deadline
   %td
-    = story.state
+    = story_state_t story.state
   %td
     - if creator?(story)
       %a{:href => edit_story_path(story)}

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    @title = t :sign_in
+    @title = t('title.sign_in')
   end
 
   def create
@@ -8,17 +8,17 @@ class SessionsController < ApplicationController
                      params[:session][:password])
     if user.present?
       sign_in user
-      redirect_back_or root_path, :notice => t(:logged_in)
+      redirect_back_or root_path, :notice => flash_translate(:notice)
     else
-      flash.now[:error] = t :session_new_failed
-      @title = t :sign_in
+      flash.now[:error] = flash_translate(:error)
+      @title = t('title.sign_in')
       render 'new'
     end
   end
 
   def destroy
     sign_out
-    redirect_to root_url, :notice => t(:logged_out)
+    redirect_to root_url, :notice => flash_translate(:notice)
   end
 
 end

@@ -1,0 +1,37 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ru:
+  flash:
+    controllers:
+      users:
+        create:
+          success: 'Пользователь создан'
+          error: 'Ошибка при создании пользователя'
+        update:
+          success: 'Данные о пользователе обновлены'
+          error: 'Ошибка при обновлении данных'
+        correct_user:
+          error: 'Доступ запрещён!'
+      sessions:
+        create:
+          notice: 'Вы успешно вошли в профиль.'
+          error: 'Неверное сочетание email/пароль'
+        destroy:
+          notice: 'Вы вышли из профиля'
+      comments:
+        create:
+          error: 'Ошибка!'
+          success: 'Комментарий создан'
+      stories:
+        create:
+          success: 'Задача создана'
+          error: 'Ошибка при создании задачи'
+        update:
+          success: 'Задача обновлена'
+          error: 'Ошибка при обновлении данных'
+        correct_user:
+          error: 'Доступ запрещён!'
+        destroy:
+          success: 'Задача удалена'
+

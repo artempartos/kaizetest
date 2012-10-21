@@ -1,0 +1,13 @@
+en:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    send: 'Создать'
+    edit: 'Редактировать'
+
+    required:
+      text: 'Обязательное поле'
+      mark: '*'
+
+    error_notification:
+      default_message: "Были обнаружены следующие проблемы:"
