@@ -11,7 +11,7 @@
   %td
     = story.deadline
   %td
-    = story_state_t story.state
+    = story.human_state_name
   %td
     - if creator?(story)
       %a{:href => edit_story_path(story)}

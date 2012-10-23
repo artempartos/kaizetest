@@ -27,10 +27,10 @@
   %p
     %b
       = st.t(:state) << ':'
-    = story_state_t @story.state
+    = @story.human_state_name
     - if creator?(@story) || performer?(@story)
       =@story.state_events.each_with_object(nil) do |e|
-        =link_to story_event_t(e), story_path(:id => @story.id, :event => e), :class => "btn btn-primary"
+        =link_to e.human_event_name, story_path(:id => @story.id, :event => e), :class => "btn btn-primary"
   %h4
     = st.t(:comments) << ':'
   = render 'comments/comment_form'
