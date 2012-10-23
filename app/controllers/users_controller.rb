@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     @title = t('users.all_users')
     @q = User.ransack(params[:q])
-    @users = @q.result(:distinct => true).order("id ASC").page(params[:page]).per_page(10)
+    @users = @q.result(:distinct => true).order("id ASC").page(params[:page])
   end
 
   def new

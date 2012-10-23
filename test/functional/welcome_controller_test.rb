@@ -4,9 +4,8 @@ class WelcomeControllerTest < ActionController::TestCase
 
   def setup
     @user = create :user
-    @story = create :story
-    @story.creator = @user
-    @story.performer = @user
+    @story = FactoryGirl.create(:story, creator: @user, performer: @user)
+
   end
 
   test "should get index" do

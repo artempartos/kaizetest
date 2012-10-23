@@ -4,7 +4,7 @@ class StoriesController < ApplicationController
   def index
     @title = t('title.all_stories')
     @q = Story.ransack(params[:q])
-    @stories = @q.result(:distinct => true).order("id ASC").page(params[:page]).per_page(10)
+    @stories = @q.result(:distinct => true).order("id ASC").page(params[:page])
 
 end
 

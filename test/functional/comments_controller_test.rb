@@ -4,7 +4,7 @@ class CommentsControllerTest < ActionController::TestCase
 
   def setup
     @user = create :user
-    @story = create :story
+    @story = FactoryGirl.create(:story, creator: @user, performer: @user)
     @comment = @user.comments.new
     @comment.body = "My test body"
     @comment.story = @story
