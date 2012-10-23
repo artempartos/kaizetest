@@ -2,10 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'jquery-rails'
-gem 'gravatar_image_tag'
 gem 'simple_form'
+gem 'russian'
 gem "twitter-bootstrap-rails"
-gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'kaminari'
 gem 'bcrypt-ruby'
@@ -16,6 +15,7 @@ gem 'ransack'
 gem "pg"
 
 group :test do
+  gem 'rake'
   gem 'minitest'
   gem 'simplecov', :require => false
   gem 'turn'
@@ -23,7 +23,6 @@ group :test do
 end
 
 group :development, :test  do
-  gem 'annotate', '2.4.1.beta1'
   gem 'factory_girl_rails'
 end
 
