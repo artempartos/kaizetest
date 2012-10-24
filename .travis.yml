@@ -1,6 +1,5 @@
 language: ruby
 before_script:
-  - psql -c 'create database kaize_test;' -U postgres
   - cp config/database.yml.sample config/database.yml
   - bundle exec rake db:create
   - bundle exec rake db:migrate
