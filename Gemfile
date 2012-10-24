@@ -13,6 +13,7 @@ gem 'state_machine'
 gem 'haml-rails', '>= 0.3.4'
 gem 'ransack'
 gem "pg"
+gem 'unicorn'
 
 group :test do
   gem 'rake'
@@ -20,9 +21,6 @@ group :test do
   gem 'simplecov', :require => false
   gem 'turn'
   gem 'tconsole'
-end
-
-group :development, :test  do
   gem 'factory_girl_rails'
 end
 
