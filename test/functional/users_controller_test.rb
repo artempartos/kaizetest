@@ -4,7 +4,7 @@ class UsersControllerTest < ActionController::TestCase
   def setup
     @user = create :user
     @attrs = {id: @user.id}
-    @example_user = {name: 'name1', email: 'example@email.ru', password: 'secure'}
+    @example_user = attributes_for :user
   end
 
   test "should get index" do

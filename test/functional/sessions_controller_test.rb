@@ -11,7 +11,7 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "should not session create" do
-    attrs = {:email => "foo@bar", :password => "123123"}
+    attrs = attributes_for(:user)
     post :create, :session => attrs
     assert !signed_in?
   end
@@ -24,7 +24,7 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "should delete session" do
-    attrs = {id: 1}
+    attrs = {id: @user.id}
     sign_in @user
     delete :destroy, attrs
     assert_response :redirect

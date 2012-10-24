@@ -4,42 +4,43 @@ class CommentsControllerTest < ActionController::TestCase
 
   def setup
     @user = create :user
-    @story = FactoryGirl.create(:story, creator: @user, performer: @user)
-    @comment = @user.comments.new
-    @comment.body = "My test body"
-    @comment.story = @story
-
-    @attrs = {:body => @comment.body}
+    @story = create(:story, creator: @user, performer: @user)
   end
 
   test "should not create comment (user unsigned)" do
-    post :create, story_id: @story, comment: @attrs
+    @comment = attributes_for(:comment)
+    post :create, story_id: @story, comment: @comment
     assert_response :redirect
-    assert_nil Comment.find_by_body(@comment.body)
+    comment = Comment.find_by_body(@comment[:body])
+    assert_nil comment
   end
 
   test "should create comment" do
+    @comment = attributes_for(:comment)
     sign_in @user
-    post :create, story_id: @story, comment: @attrs
+    post :create, story_id: @story, comment: @comment
     assert_response :redirect
-    assert_not_nil Comment.find_by_body(@comment.body)
+    comment = Comment.find_by_body(@comment[:body])
+    assert_not_nil comment
   end
 
   test "should not destroy comment (user unsigned)" do
-    @comment.save
+    @comment = create(:comment, story: @story, user: @user)
     attrs = {story_id: @story, :id => @comment.id}
     delete :destroy, attrs
     assert_response :redirect
-    assert_not_nil Comment.find_by_id([@comment.id])
+    comment = Comment.find_by_id([@comment.id])
+    assert_not_nil comment
   end
 
   test "should destroy comment" do
-    @comment.save
+    @comment = create(:comment, story: @story, user: @user)
     sign_in @user
     attrs = {story_id: @story, :id => @comment.id}
     delete :destroy, attrs
     assert_response :redirect
-    assert_nil Comment.find_by_id([@comment.id])
+    comment = Comment.find_by_id([@comment.id])
+    assert_nil comment
   end
 
 end

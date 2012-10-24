@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :user do
-    name            "Name"
-    email           "email@gmail.com"
-    password        "password"
+    name            {generate :name}
+    email           {generate :email}
+    password        {generate :string}
   end
 
 end

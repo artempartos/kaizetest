@@ -4,22 +4,10 @@ class StoriesControllerTest < ActionController::TestCase
 
   def setup
     @user = create :user
-    @unsign_user = FactoryGirl.build(:user)
-    @unsign_user.email = "new@email.com"
-    @unsign_user.save
+    @unsign_user = create :user
     sign_in @user
-    @story = Story.new
-    @story.title = "title1"
-    @story.description = "description1"
-    @story.deadline = '2014-01-01 00:00:00'
-    @story.creator = @user
-    @story.performer = @user
-    @story.save
-
-    @example_story = {title: 'Example Story Title',
-                      description: 'Example description',
-                      deadline: '2013-01-01 00:00:00',
-                      performer_id: @user.id}
+    @story = create(:story, creator: @user, performer: @user)
+    @example_story = attributes_for(:story, performer_id: @user.id)
   end
 
   test "should get index" do
@@ -37,15 +25,16 @@ class StoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create story" do
-    post :create, story: @example_story
-    assert_response :redirect
-    assert_not_nil Story.find_by_title @example_story[:title]
-  end
-
   test "should edit story" do
     get :edit, id: @story.id
     assert_response :success
+  end
+
+  test "should create story" do
+    post :create, story: @example_story
+    assert_response :redirect
+    story = Story.find_by_title @example_story[:title]
+    assert_not_nil story
   end
 
   test "should update story" do

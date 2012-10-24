@@ -2,10 +2,8 @@
 
 FactoryGirl.define do
   factory :story do
-    title "MyString"
-    description "MyString"
-    deadline "2012-10-08 16:45:32"
-    performer_id 1
-    creator_id 1
+    title {generate :string}
+    description {generate :description}
+    deadline {Time.current}
   end
 end
