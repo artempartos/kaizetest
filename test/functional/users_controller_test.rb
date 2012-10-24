@@ -31,19 +31,22 @@ class UsersControllerTest < ActionController::TestCase
   test "should create user" do
     post :create, user: @example_user
     assert_response :redirect
-    assert_not_nil User.find_by_email @example_user[:email]
+    user = User.find_by_email @example_user[:email]
+    assert_not_nil user
   end
 
   test "should update user" do
     sign_in @user
     put :update, id: @user.id,user: @example_user
     assert_response :redirect
-    assert_not_nil User.find_by_email @example_user[:email]
+    user = User.find_by_email @example_user[:email]
+    assert_not_nil user
   end
 
   test "should not update user" do
     put :update, id: @user.id,user: @example_user
-    assert_nil User.find_by_email @example_user[:email]
+    user = User.find_by_email @example_user[:email]
+    assert_nil user
   end
 
   test "should get show" do

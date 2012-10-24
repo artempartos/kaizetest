@@ -39,26 +39,30 @@ class StoriesControllerTest < ActionController::TestCase
 
   test "should update story" do
     put :update, id: @story.id,story: @example_story
-    assert_not_nil Story.find_by_title @example_story[:title]
+    story = Story.find_by_title @example_story[:title]
+    assert_not_nil story
   end
 
   test "should not update story" do
     sign_out
     sign_in @unsign_user
     put :update, id: @story.id,story: @example_story
-    assert_nil Story.find_by_title @example_story[:title]
+    story = Story.find_by_title @example_story[:title]
+    assert_nil story
   end
 
   test "should destroy story" do
     delete :destroy, id: @story.id
-    assert_nil Story.find_by_title @story.title
+    story = Story.find_by_title @story.title
+    assert_nil story
   end
 
   test "should not destroy story" do
     sign_out
     sign_in @unsign_user
     delete :destroy, id: @story.id
-    assert_not_nil Story.find_by_title @story.title
+    story = Story.find_by_title @story.title
+    assert_not_nil story
   end
 
 end
