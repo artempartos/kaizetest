@@ -1,11 +1,10 @@
 - with_options :scope => :users do |us|
-  %h1
-    = us.t('all_users')
+  %h1 #{t 'header.users'}
   = search_form_for @q do |f|
-    = f.text_field :name_cont , :placeholder => us.t(:name)
-    = f.text_field :email_cont , :placeholder => us.t(:email)
-    = f.submit  :class => "btn btn-info btn-mini", :value => us.t(:filter)
-    = link_to us.t(:cancel), users_path, :class => "btn btn-info btn-mini"
+    = f.text_field :name_cont, placeholder: t('search.name')
+    = f.text_field :email_cont, placeholder: t('search.email')
+    = f.submit  :class => "btn btn-info btn-mini", :value => t(:filter)
+    = link_to t(:no_filter), users_path, :class => "btn btn-info btn-mini"
 
   = paginate @users
   %table.table.table-striped.users.round

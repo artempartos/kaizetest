@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    @title = t('title.sign_in')
+    @title = title_translate
   end
 
   def create
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_back_or root_path, :notice => flash_translate(:notice)
     else
       flash.now[:error] = flash_translate(:error)
-      @title = t('title.sign_in')
+      title_translate
       render 'new'
     end
   end

@@ -1,26 +1,19 @@
-- with_options :scope => :table do |table|
-  %thead
-    %tr
-      %td
-        %b
-          = table.t(:title)
-      %td
-        %b
-          = table.t(:description)
-      %td
-        %b
-          = table.t(:creator)
-      %td
-        %b
-          = table.t(:performer)
-      %td
-        %b
-          = table.t(:deadline)
-      %td
-        %b
-          = table.t(:state)
-      %td
-        %i.icon-pencil
-      %td
-        %i.icon-remove
-  %tbody
+%thead
+  %tr
+    %td
+      %b #{Story.human_attribute_name(:title)}
+    %td
+      %b #{Story.human_attribute_name(:description)}
+    %td
+      %b #{Story.human_attribute_name(:creator_id)}
+    %td
+      %b #{Story.human_attribute_name(:performer_id)}
+    %td
+      %b #{Story.human_attribute_name(:deadline)}
+    %td
+      %b #{Story.human_attribute_name(:state)}
+    %td
+      %i.icon-pencil
+    %td
+      %i.icon-remove
+%tbody

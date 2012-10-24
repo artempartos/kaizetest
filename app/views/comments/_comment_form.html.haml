@@ -1,4 +1,3 @@
-- with_options :scope => :comments do |com|
-  = simple_form_for @story.comments.new, :url => story_comments_path(story_id: @story.id) do |f|
-    = f.input :body, :placeholder => com.t(:body), :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xlarge"}
-    = f.submit class: 'btn btn-primary', value: com.t(:send)
+= simple_form_for @story.comments.new, :url => story_comments_path(story_id: @story.id) do |f|
+  = f.input :body, :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xlarge"}
+  = f.submit class: 'btn btn-primary'

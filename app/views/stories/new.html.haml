@@ -4,9 +4,9 @@
   %p
     = st.t :create_story
   = simple_form_for (@story) do |f|
-    = f.input :title, :placeholder => st.t(:title), :label => false,:input_html => {:class => 'input-xxlarge' }
-    = f.input :description, :placeholder => st.t(:description), :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xxlarge"}
-    = f.input :deadline, :label => st.t(:deadline),:input_html => {:class => 'input-small' }
-    = f.association :performer, :collection => User.all(:order => 'id'), :prompt => st.t(:performer)
-    = f.submit st.t(:create), :class =>'btn btn-primary'
+    = f.input :title, :label => false,:input_html => {:class => 'input-xxlarge' }
+    = f.input :description, :label => false,  :as => :text, :input_html => {:rows => 3 , :class => "input-xxlarge"}
+    = f.input :deadline,:input_html => {:class => 'input-small' }
+    = f.association :performer, :collection => User.all(:order => 'id')
+    = f.submit :class =>'btn btn-primary'
 

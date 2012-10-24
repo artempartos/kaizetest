@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
 
   def index
-    @title = t('users.all_users')
+    @title = title_translate
     @q = User.ransack(params[:q])
     @users = @q.result(:distinct => true).order("id ASC").page(params[:page])
   end
 
   def new
-    @title = t 'title.sign_up'
+    @title = title_translate
     @user = User.new
   end
 
@@ -21,14 +21,14 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash[:error] = flash_translate :error
-      @title = t 'title.sign_up'
+      @title = title_translate
       render 'new'
     end
   end
 
   def edit
     @user = User.find(params[:id])
-    @title = @user.name
+    @title = title_translate
   end
 
   def update
@@ -37,14 +37,14 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash[:error] = flash_translate :error
-      @title = t 'title.edit'
+      @title = title_translate
       render 'edit'
     end
   end
 
   def show
     @user = User.find(params[:id])
-    @title = @user.name
+    @title = title_translate
   end
 
   private

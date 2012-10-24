@@ -1,10 +1,9 @@
 - with_options :scope => :sessions do |ses|
-  %h1 #{ses.t(:sign_in)}
-  = simple_form_for(:session, :url => sessions_path) do |f|
-    = f.input :email, :placeholder => ses.t(:email), :label => false
-    = f.input :password, :placeholder => ses.t(:pass), :label => false
-    %br/
-    = f.submit ses.t(:sign_in), :class =>'btn btn-primary'
+  %h1 #{ses.t(:edit)}
+  = simple_form_for(:session, url: sessions_path) do |f|
+    = f.input :email, :label => false
+    = f.input :password, :label => false
+    = f.submit ses.t(:edit), :class =>'btn btn-primary'
   %p
     =ses.t(:new)
     = link_to ses.t(:now), new_user_path

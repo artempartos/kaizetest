@@ -1,4 +1,4 @@
-en:
+ru:
   simple_form:
     "yes": 'Да'
     "no": 'Нет'
@@ -11,3 +11,35 @@ en:
 
     error_notification:
       default_message: "Были обнаружены следующие проблемы:"
+
+    labels:
+      story:
+        performer: 'Исполнитель'
+        deadline: 'Срок'
+
+    placeholders:
+      story:
+        title: 'Заголовок'
+        description: 'Описание'
+      comment:
+        body: 'Содержание'
+      user:
+        name: 'Имя'
+        email: 'Почта'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение'
+      session:
+        email: 'Почта'
+        password: 'Пароль'
+
+  helpers:
+    submit:
+      story:
+        create: "Создать задачу"
+        update: "Обновить задачу"
+      comment:
+        create: 'Отправить'
+      user:
+        create: "Создать пользователя"
+        update: "Обновить пользователя"
+

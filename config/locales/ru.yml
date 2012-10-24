@@ -11,7 +11,7 @@ ru:
               blank: 'Поле не может быть пустым'
             email:
               blank: 'Поле не может быть пустым'
-              email: 'Неверный формат email'
+              email: 'Неверный формат почты'
             password:
               too_short: 'Пароль должен быть не менее 6 символов'
               confirmation: 'Подтвержённый пароль не совпадает с введённым'
@@ -31,19 +31,19 @@ ru:
             accept: 'Принять'
             reject: 'Отклонить'
 
-  date:
-    formats:
-      default: "%Y-%m-%d"
-      short: "%b %d"
-      long: "%B %d, %Y"
-    day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
-    abbr_day_names: [Вс, Пон, Вт, Ср, Чт, Пт, Сб]
-    month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
-    abbr_month_names: [~, Янв, Фев, Март, Апр, Май, Июнь, Июль, Авг, Сент, Окт, Ноя, Дек]
-    order:
-      - :year
-      - :month
-      - :day
+    attributes:
+      story:
+        title: 'Заголовок'
+        description: 'Описание'
+        creator_id: 'Создатель'
+        performer_id: 'Владелец'
+        deadline: 'Срок'
+        state: 'Состояние'
+        created_at: 'Создано'
+        updated_at: 'Обновлено'
+      user:
+        name: 'Имя'
+        email: 'Почта'
 
   views:
     pagination:
@@ -53,11 +53,6 @@ ru:
       next: "Следующая &rsaquo;"
       truncate: "..."
 
-  comments:
-    posted: 'Опубликовано'
-    body: 'Содержание'
-    send: 'Отправить'
-
   story:
     tasks: 'Задачи'
     all: 'Все задачи'
@@ -66,31 +61,11 @@ ru:
     stories: "Задачи"
     edit_story: "Редактировать задачу"
     change_in_story: "Вы можете внести изменения в проект"
-    filter: "Фильтр"
-    cancel: "Сбросить"
+
     all_stories: 'Задачи'
     create: 'Создать'
     new_story: 'Новая задача'
     create_story: 'Создайте новую задачи, опишите её, установите срок и исполнителя'
-    comments: 'Комментарии'
-    state: 'Состояние задачи'
-    title: "Заголовок"
-    deadline: "Срок"
-    description: "Описание"
-    creator: "Владелец"
-    performer: "Исполнитель"
-    state: "Состояние"
-    created: 'Создано'
-    updated: 'Обновлено'
-    edit: 'Редактировать'
-
-  table:
-    title: "Заголовок"
-    deadline: "Срок"
-    description: "Описание"
-    creator: "Владелец"
-    performer: "Исполнитель"
-    state: "Состояние"
 
   header:
     sign_in: 'Войти'
@@ -111,41 +86,24 @@ ru:
     sign_in: 'Войти'
     sign_up: 'Зарегистрироваться'
 
-  users:
-    filter: "Фильтр"
-    cancel: "Сбросить"
-    name: "Имя"
-    email: 'Почта'
-    edit_user: "Редактировать профиль"
-    profile_updated: "Профиль обновлён."
-    make_comment: "Создать комментарий"
-    send: 'Отправить'
-    name: 'Имя'
-    email: 'Почта'
-    profile: 'Профиль'
-    password: 'Пароль'
-    password_conf: 'Подтверждение'
-    edit: "Редактировать"
-    all_users: "Пользователи"
-    created: "Создано"
-    updated: "Обновлено"
-    sign_up: "Зарегистрироваться"
-
   sessions:
-    sign_in: 'Войти'
-    email: 'Электронный адрес'
+    email: 'Почта'
     pass: 'Пароль'
+    edit: 'Войти'
     new: 'Новый пользователь?'
     now: 'Зарегистрируйтесь прямо сейчас!'
 
-  title:
-    base_title: 'Менеджер задач'
-    all_stories: 'Задачи'
-    new_story: 'Новая задача'
-    sign_in: 'Войти'
-    sign_up: 'Регистрация'
-    edit: "Редактировать"
-    home: "Главная"
+  comments: 'Комментарии'
+  posted: 'Опубликовано'
+  filter: "Фильтр"
+  no_filter: "Сбросить"
+
+  search:
+    name: 'Имя'
+    email: 'Почта'
+    creator: 'Создатель'
+    state: 'Состояние'
+
 
 
 

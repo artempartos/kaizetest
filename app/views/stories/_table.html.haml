@@ -1,26 +1,19 @@
-- with_options :scope => :table do |table|
-  %thead
-    %tr
-      %td
-        %b
-          = sort_link @q, :title
-      %td
-        %b
-          = sort_link @q, :description
-      %td
-        %b
-          = sort_link @q, :creator_id
-      %td
-        %b
-          = sort_link @q, :performer_id
-      %td
-        %b
-          = sort_link @q, :deadline
-      %td
-        %b
-          = sort_link @q, :state
-      %td
-        %i.icon-pencil
-      %td
-        %i.icon-remove
-  %tbody
+%thead
+  %tr
+    %td
+      %b #{sort_link @q, :title}
+    %td
+      %b #{sort_link @q, :description}
+    %td
+      %b #{sort_link @q, :creator_id}
+    %td
+      %b #{sort_link @q, :performer_id}
+    %td
+      %b #{sort_link @q, :deadline}
+    %td
+      %b #{sort_link @q, :state}
+    %td
+      %i.icon-pencil
+    %td
+      %i.icon-remove
+%tbody

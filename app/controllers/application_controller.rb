@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include AuthHelper
   include AccessHelper
   include FlashHelper
+  include TitleHelper
 
   helper_method :signed_in?, :current_user?, :current_user, :creator?, :performer?
   #force_ssl

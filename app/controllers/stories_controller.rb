@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   before_filter :correct_user_to_story, :only => [:edit, :update, :destroy]
 
   def index
-    @title = t('title.all_stories')
+    @title = title_translate
     @q = Story.ransack(params[:q])
     @stories = @q.result(:distinct => true).order("id ASC").page(params[:page])
 
@@ -12,12 +12,12 @@ end
     @story = Story.find(params[:id])
     @story.fire_state_event(params[:event]) if params[:event].present?
     #if ((params[:event]=="start" || params[:event]=="finish")&&performer?(@story))||creator?(@story)
-    @title = @story.title
+    @title = title_translate
     @comments = @story.comments.order("id DESC").page params[:page]
   end
 
   def new
-    @title = t 'title.new_story'
+    @title = title_translate
     @story = Story.new
   end
 
@@ -35,7 +35,7 @@ end
 
   def edit
     @story = Story.find_by_id(params[:id])
-    @title = @story.title
+    @title = title_translate
   end
 
   def update
@@ -44,7 +44,7 @@ end
       redirect_to @story
     else
       flash[:error] = flash_translate :error
-      @title = t :edit_story
+      @title = title_translate
       render 'edit'
     end
   end

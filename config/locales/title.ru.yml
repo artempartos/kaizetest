@@ -1,0 +1,26 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ru:
+  title:
+    base_title: 'Менеджер задач'
+    controllers:
+      welcome:
+        index: 'Главная'
+      users:
+        index: 'Все пользователи'
+        new: 'Регистрация'
+        create: 'Регистрация'
+        edit: 'Изменить профиль'
+        update: 'Изменить профиль'
+        show: 'Профиль'
+      stories:
+        index: 'Задачи'
+        new: 'Создать задачу'
+        create: 'Создать задачу'
+        edit: 'Редактировать задачу'
+        update: 'Редактировать задачу'
+        show: 'Данные о задаче'
+      sessions:
+        new: 'Вход'
+        create: 'Вход'
