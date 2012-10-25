@@ -4,10 +4,10 @@
       %span.content
         = comment.body
       %span.timestamp
-        = t :posted
+        = t 'comment.posted'
         = link_to comment.user.name, comment.user
         = time_ago_in_words(comment.created_at)
-        ago.
+        = t 'comment.ago'
   - if current_user?(comment.user)
     %td
       = link_to story_comment_path(comment.story, comment), :method => :delete,:title => comment.body do

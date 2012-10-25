@@ -40,7 +40,7 @@
 
     - if request.fullpath.include?(stories_path)
       %ul.nav.nav-list.right
-        - with_options :scope => :story do |story_nav|
+        - with_options :scope => 'header.story' do |story_nav|
           %li.nav-header
             = story_nav.t(:tasks)
           %li{:class => (current_page?(stories_path) ? 'active' : '')}

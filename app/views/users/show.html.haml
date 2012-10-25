@@ -1,22 +1,16 @@
-- with_options :scope => :users do |us|
-  %h1 #{us.t :profile}
-  %p
-    %b
-      = us.t(:name) << ':'
-    = @user.name
-  %p
-    %b
-      = us.t(:email) << ':'
-    = @user.email
-  %p
-    %b
-      = us.t(:password) << ':'
-    = @user.password_digest
-  %p
-    %b
-      = us.t(:updated) << ':'
-    = @user.updated_at
-  %p
-    %b
-      = us.t(:created) << ':'
-    = @user.created_at
+%h1 #{t 'header.profile'}
+%p
+  %b #{User.human_attribute_name(:name) << ':'}
+  = @user.name
+%p
+  %b #{User.human_attribute_name(:email) << ':'}
+  = @user.email
+%p
+  %b #{User.human_attribute_name(:password_digest) << ':'}
+  = @user.password_digest
+%p
+  %b #{User.human_attribute_name(:updated_at) << ':'}
+  = @user.updated_at
+%p
+  %b #{User.human_attribute_name(:created_at) << ':'}
+  = @user.created_at

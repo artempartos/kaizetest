@@ -44,6 +44,15 @@ ru:
       user:
         name: 'Имя'
         email: 'Почта'
+        password_digest: 'Пароль'
+        created_at: 'Создано'
+        updated_at: 'Обновлено'
+
+  date:
+      datetime:
+        distance_in_words:
+          ago: 'назад'
+
 
   views:
     pagination:
@@ -54,16 +63,10 @@ ru:
       truncate: "..."
 
   story:
-    tasks: 'Задачи'
-    all: 'Все задачи'
-    my: 'Мои задачи'
     create: 'Создать задачу'
     stories: "Задачи"
     edit_story: "Редактировать задачу"
     change_in_story: "Вы можете внести изменения в проект"
-
-    all_stories: 'Задачи'
-    create: 'Создать'
     new_story: 'Новая задача'
     create_story: 'Создайте новую задачи, опишите её, установите срок и исполнителя'
 
@@ -73,9 +76,16 @@ ru:
     sign_up: 'Зарегистрироваться'
     home: "Главная"
     users: "Пользователи"
+    edit_user: 'Редактировать профиль'
     stories: 'Задачи'
     profile: 'Профиль'
     settings: 'Настройки'
+    tasks: 'Задачи'
+    story:
+      tasks: 'Задачи'
+      all: 'Все задачи'
+      my: 'Мои задачи'
+      create: 'Создать задачу'
 
   home:
     hi: "Добро пожаловать"
@@ -93,8 +103,11 @@ ru:
     new: 'Новый пользователь?'
     now: 'Зарегистрируйтесь прямо сейчас!'
 
+  comment:
+    posted: 'Опубликовано'
+    ago: 'назад'
+
   comments: 'Комментарии'
-  posted: 'Опубликовано'
   filter: "Фильтр"
   no_filter: "Сбросить"
 

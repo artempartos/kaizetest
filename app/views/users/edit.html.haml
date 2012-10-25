@@ -1,6 +1,5 @@
-- with_options :scope => :users do |us|
-  %h1
-    = us.t :edit_user
+%h1
+  = t 'header.edit_user'
 = simple_form_for @user do |f|
   = f.input :name,  :label => false
   = f.input :email, :label => false
