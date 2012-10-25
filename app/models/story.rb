@@ -12,28 +12,28 @@ class Story < ActiveRecord::Base
   state_machine :state, :initial => :new do
 
     event :start do
-      transition [:rejected, :new] => :started, :if => :CanChange?
+      transition [:rejected, :new] => :started, :if => :can_change?
      end
 
     event :finish do
-      transition :started => :finished , :if => :CanChange?
+      transition :started => :finished , :if => :can_change?
     end
 
     event :accept do
-      transition :finished => :accepted , :if => :IsCreator?
+      transition :finished => :accepted , :if => :is_creator?
     end
 
     event :reject do
-      transition :finished => :rejected , :if => :IsCreator?
+      transition :finished => :rejected , :if => :is_creator?
     end
 
   end
 
-  def IsCreator?
+  def is_creator?
     creator.eql?(state_changer)
   end
 
-  def CanChange?
+  def can_change?
     state_changer.in?(creator, performer)
   end
 
