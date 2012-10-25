@@ -10,8 +10,8 @@ end
 
   def show
     @story = Story.find(params[:id])
+    @story.state_changer = current_user
     @story.fire_state_event(params[:event]) if params[:event].present?
-    #if ((params[:event]=="start" || params[:event]=="finish")&&performer?(@story))||creator?(@story)
     @title = title_translate
     @comments = @story.comments.order("id DESC").page params[:page]
   end
