@@ -1,5 +1,4 @@
 class Story < ActiveRecord::Base
-  include AuthHelper
   attr_accessible :deadline, :description, :performer_id, :title, :creator_id
   attr_accessor :state_changer
   belongs_to :creator, :class_name => "User"#, :foreign_key => :creator_id
